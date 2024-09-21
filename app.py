@@ -86,7 +86,7 @@ def scraper():
 def connectDatabase(df):
     try:
         client = pymongo.MongoClient(
-            "mongodb+srv://aspro1141:3j3nuNuRfKgwxslz@miners.cydxp.mongodb.net/?retryWrites=true&w=majority&appName=miners",
+            "mongodb+srv://anshrv17:0D3B2RH0yAlqoSJJ@miners.na2kt.mongodb.net/?retryWrites=true&w=majority&appName=miners",
             tls=True
         )
         db = client['minersInfo']
