@@ -36,7 +36,7 @@ def scraper():
             except:
                 unit_power = ""
             try:
-                rev24h = data['unit_output_currency']
+                rev24h = float(data['profit_currency_with_gift'])+float(data["electricity_fee_currency"]) # Profit Currency with Gift + Electricity Fee Currency
             except:
                 rev24h = ""
             try:
@@ -44,11 +44,11 @@ def scraper():
             except:
                 electricityFee = ""
             try:
-                electricRatio = float(data['electricity_fee_percent'])*100
+                electricRatio = float(data['electricity_fee_percent'])*100  #electricity_fee_percent_with_gift	
             except:
                 electricRatio = ""
             try:
-                netProfit24h = data['profit_currency']
+                netProfit24h = data['profit_currency_with_gift']
             except:
                 netProfit24h = ""
             try:
@@ -78,6 +78,7 @@ def scraper():
     df = pd.DataFrame(data_list)
     df_sorted = df.sort_values(by=['Coin',"User Electricity Fee"])
     print("Data collected and sorted.")
+    # df_sorted.to_csv("Output.csv",index=False)
     connectDatabase(df_sorted)
 
 def connectDatabase(df):
